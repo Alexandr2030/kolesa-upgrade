@@ -36,6 +36,9 @@ class SearchProduct
      */
     public static $check_product_blouse_css = '.pb-center-column>h1';
 
+    /**
+     * 
+     */
     public static function route($param)
     {
         return static::$URL.$param;
