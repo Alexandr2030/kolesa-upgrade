@@ -2,9 +2,9 @@
 namespace Page\Acceptance;
 
 /**
- * Главная страница
+ * Класс для поиска товаров
  */
-class SearchProduct
+class SearchPage
 {
     /**
      * URL 

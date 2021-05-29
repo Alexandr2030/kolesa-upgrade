@@ -1,5 +1,6 @@
 <?php
 
+use Page\Acceptance\SearchPage;
 use Page\Acceptance\SearchProduct;
 
 /**
@@ -17,24 +18,27 @@ class SearchProductCest
 
     {
 
-        $I->amOnPage(SearchProduct::$URL);
-        $I->waitForElementVisible(SearchProduct::$product_blouse_css);
-        $I->seeElement(SearchProduct::$product_blouse_css);
-        $I->scrollTo(SearchProduct::$product_blouse_css);
-        $I->moveMouseOver(SearchProduct::$product_blouse_css);
-        $I->click(SearchProduct::$click_to_quick_view_css);
-        $I->waitForElementVisible(SearchProduct::$product_card_css);
-        $I->seeElement(SearchProduct::$product_card_css);
-        $I->switchToIFrame(SearchProduct::$iframe_css);
-        $I->waitForElementVisible(SearchProduct::$check_product_blouse_css);
-        $I->seeElement(SearchProduct::$check_product_blouse_css);
+        $I->amOnPage(SearchPage::$URL);
+        $I->waitForElementVisible(SearchPage::$product_blouse_css);
+        $I->seeElement(SearchPage::$product_blouse_css);
+        $I->scrollTo(SearchPage::$product_blouse_css);
+        $I->moveMouseOver(SearchPage::$product_blouse_css);
+        $I->click(SearchPage::$click_to_quick_view_css);
+        $I->waitForElementVisible(SearchPage::$product_card_css);
+        $I->seeElement(SearchPage::$product_card_css);
+        $I->switchToIFrame(SearchPage::$iframe_css);
+        $I->waitForElementVisible(SearchPage::$check_product_blouse_css);
+        $I->seeElement(SearchPage::$check_product_blouse_css);
 
     }
 
     /**
-     * Найти с помощью селекторов XPATH на странице товар "Blouse" и убедиться, что это нужный нам товар
+     * Найти с помощью селекторов CSS на странице товар "Blouse" и убедиться, что это нужный нам товар
      */
     // public function checkSearchProductBlouse_with_xpath(AcceptanceTester $I)
+    /**
+     * Функция оставлена только для закрепления поиска локаторов по xpath для апрува Эдуардом
+     */
 
     // {
     //     $product_blouse_xpath = '//*[@id="homefeatured"]/li[2]';
