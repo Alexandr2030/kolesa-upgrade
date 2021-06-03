@@ -25,7 +25,6 @@ class HabrCategoryCest
         $I->waitForElement(sprintf(Category::$navbarLinks, $data['flows']));
         $I->click(sprintf(Category::$navbarLinks, $data['flows']));
         $I->waitForElementVisible(Category::$catLink);
-        // $I->seeInCurrentUrl([$I->grabFromCurrentUrl()]);
         $I->seeInCurrentUrl($data['url']);
     }
 
