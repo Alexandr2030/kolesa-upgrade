@@ -9,7 +9,8 @@ modules:
     enabled:
         - WebDriver:
             # url: http://automationpractice.com/index.php
-            url: https://www.saucedemo.com/
+            # url: https://www.saucedemo.com/
+            url: https://habr.com/ru/
             host: localhost
             port: 9515
             browser: chrome
