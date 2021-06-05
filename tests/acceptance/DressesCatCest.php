@@ -4,18 +4,20 @@ use Page\Acceptance\Dresses;
 
 /**
  * Класс для проверки Summer Dresses
+ * 
  */
 
-class SummerDressesCest
+class DressesCest
 {
     /**
-     * Функция проверки вида карточек Summer Dresses
+     * Функция проверки вида карточек Summer Dresses(старый тест)
      */
     public function checkSummerDressesView(AcceptanceTester $I)
     /**
      * 
      */
     {
+        // $scenario->skip('Старый тест, для ДЗ_08 не нужен');
         $I->amOnPage(Dresses::$URL);
         $I->seeElement(Dresses::$dresses_button);
         $I->moveMouseOver(Dresses::$dresses_button);
@@ -30,24 +32,4 @@ class SummerDressesCest
         $I->waitForElement(Dresses::$list_table);
         $I->seeElement(Dresses::$list_table);
     }
-    // tests
-    
-    // public function checkSearchProductBlouse_with_css(AcceptanceTester $I)
-
-    // {
-
-    //     $I->amOnPage(SearchProduct::$URL);
-    //     $I->waitForElementVisible(SearchProduct::$product_blouse_css);
-    //     $I->seeElement(SearchProduct::$product_blouse_css);
-    //     $I->scrollTo(SearchProduct::$product_blouse_css);
-    //     $I->moveMouseOver(SearchProduct::$product_blouse_css);
-    //     $I->click(SearchProduct::$click_to_quick_view_css);
-    //     $I->waitForElementVisible(SearchProduct::$product_card_css);
-    //     $I->seeElement(SearchProduct::$product_card_css);
-    //     $I->switchToIFrame(SearchProduct::$iframe_css);
-    //     $I->waitForElementVisible(SearchProduct::$check_product_blouse_css);
-    //     $I->seeElement(SearchProduct::$check_product_blouse_css);
-
-    // }
-
 }
