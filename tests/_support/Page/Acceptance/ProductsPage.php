@@ -3,12 +3,27 @@ namespace Page\Acceptance;
 
 class ProductsPage
 {
+
+    /**
+     * Пароль
+     */
+
      /**
      * Страница c платьями
      *
      * @var string
      */
     public static $dressesUrl = 'index.php?id_category=8&controller=category';
+
+    /**
+     * Селектор лого
+     */
+    public static $headerLogo = '#header_logo';
+
+    /**
+     * Url
+     */
+    public static $URL = '';
 
     /**
      * Селектор с блоком товаров
@@ -22,7 +37,13 @@ class ProductsPage
      *
      * @var string
      */
-    public static $firstProductCard = '//ul[contains(@class, "product_list")]//li[contains(@class, "product")][1]';
+    public static $firstProductCard = '//*[@id="homefeatured"]/li[%s]';
+
+    /**
+     * Селектор кнопки быстрый просмотр
+     */
+    public static $quick_view_button = '#homefeatured > li:nth-child(1) a.quick-view';
+
     /**
      * Селектор кнопки добавления товара в корзину
      *
@@ -31,11 +52,21 @@ class ProductsPage
     public static $addToCartButton = '//li[contains(@class,"ajax_block_product")][%s]//a[@title="Add to cart"]';
 
     /**
-     * Селектор модалки с сообщением об успешном добавлении товара
+     * Селектор карточки товара
      *
      * @var string
      */
-    public static $addSuccessModal= '//div[@id="layer_cart"]';
+    public static $cartWindow= '.fancybox-iframe';
+
+    /**
+     * Селектор кнопки "добавить в список желаний"
+     */
+    public static $addToWishList = '#wishlist_button';
+
+    /**
+     * 
+     */
+    public static $closeCartButton = '#product > div.fancybox-overlay.fancybox-overlay-fixed > div > div > a';
 
     /**
      * Селектор кнопки возвращения к покупкам
@@ -49,7 +80,7 @@ class ProductsPage
      *
      * @var string
      */
-    public static $successMessage = 'Product successfully added to your shopping cart';
+    public static $successMessage = 'Added to your wishlist.';
 
       /**
        * Селектор кнопки корзины на странице товаров

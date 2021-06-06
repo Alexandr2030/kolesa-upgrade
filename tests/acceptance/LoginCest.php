@@ -16,8 +16,7 @@ use Page\Acceptance\Login;
      {
         $loginPage = new Login($I);
 
-        $I
-            ->amOnPage(Login::$URL);
+        $I->amOnPage(Login::$URL);
         $loginPage
             ->fillUsernameField()
             ->fillPasswordField()
