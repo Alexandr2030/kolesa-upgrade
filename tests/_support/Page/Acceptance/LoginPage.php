@@ -46,7 +46,9 @@ class LoginPage
     /**
      * Селектор кнопки logout
      */
-    public static $logoutButton= '.logout >a';
+    public static $logoutButton= '//*[@class="logout"]/a';
+
+    public static $quantity = '//td[2]';
 
     /**
      * Селектор поля пароль

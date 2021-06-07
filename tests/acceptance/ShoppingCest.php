@@ -1,9 +1,8 @@
 <?php
 
-use GuzzleHttp\Handler\Proxy;
 use Page\Acceptance\LoginPage;
 use Page\Acceptance\ProductsPage;
-use Page\Acceptance\ShoppingListPage;
+
 
 /**
  * Класс для покупки товаров
@@ -66,7 +65,7 @@ class ShopppingCest
         $I->click(ProductsPage::$wishListButtonInAccount);
         $I->waitForText(LoginPage::$successTextOfWishlist);
 
-        $totalSum = $I->grabValueFrom('//td[2]');
+        $totalSum = $I->grabValueFrom(LoginPage::$quantity);
         // var_dump($totalSum);
         $I->assertEquals(self::PRODUCTS_NMB, $totalSum);
 
