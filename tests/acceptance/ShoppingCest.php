@@ -68,7 +68,7 @@ class ShopppingCest
 
         $totalSum = $I->grabValueFrom('//td[2]');
         // var_dump($totalSum);
-        $I->assertEquals('2', $totalSum);
+        $I->assertEquals(self::PRODUCTS_NMB, $totalSum);
 
     }
 
