@@ -11,7 +11,7 @@ use Page\Acceptance\ShoppingListPage;
  */
 class ShopppingCest
 {
-    public const PRODUCTS_NMB = 1;
+    public const PRODUCTS_NMB = 2;
 
 
     /**
@@ -31,6 +31,17 @@ class ShopppingCest
     }
 
     /**
+     * Метод будет выполняться после всех тестов
+     */
+    public function _after(\AcceptanceTester $I)
+    {
+        $I->waitForElementVisible(LoginPage::$cancellButton);
+        $I->click(LoginPage::$cancellButton);
+        $I->acceptPopup();
+        $I->click(LoginPage::$logoutButton);
+    }
+
+    /**
      * Проверка листа желаний добавленных товаров
      */
     public function checkWishList(\AcceptanceTester $I)
@@ -38,23 +49,27 @@ class ShopppingCest
         for($i = 1; $i<=self::PRODUCTS_NMB; $i++) {
             $I->waitForElement(sprintf(ProductsPage::$firstProductCard, $i));
             $I->moveMouseOver(sprintf(ProductsPage::$firstProductCard, $i));
-            $I->click(ProductsPage::$quick_view_button);
+            $I->waitForElementVisible(sprintf(ProductsPage::$quick_view_button, $i));
+            $I->click(sprintf(ProductsPage::$quick_view_button, $i));
             $I->waitForElementVisible(ProductsPage::$cartWindow);
             $I->switchToIFrame(ProductsPage::$cartWindow);
             $I->click(ProductsPage::$addToWishList);
             $I->waitForText(ProductsPage::$successMessage);
-            
-            $I->click(ProductsPage::$closeCartButton);
             $I->switchToIFrame();
-            $I->wait(5);
+            $I->click(ProductsPage::$iframeCloseButton);
+
         }
-        // $I->moveMouseOver(sprintf(ProductsPage::$productCards, $i));
-        // $I->click(sprintf(ProductsPage::$addToCartButton, $i));
-        // $I->waitForElementVisible(ProductsPage::$addSuccessModal);
-        // $I->waitForText(ProductsPage::$successMessage);
-        // $I->waitForElementVisible(ProductsPage::$goBackShoppingButton);
-        // $I->click(ProductsPage::$goBackShoppingButton);
-        // $I->click(ProductsPage::$cartListButton);
-        // $I->seeInCurrentUrl(ShoppingListPage::$ordersUrl);
+
+        $I->click(ProductsPage::$accountBotton);
+        $I->waitForElementVisible(ProductsPage::$wishListButtonInAccount);
+        $I->seeInCurrentUrl(LoginPage::$myAccountUrl);
+        $I->click(ProductsPage::$wishListButtonInAccount);
+        $I->waitForText(LoginPage::$successTextOfWishlist);
+
+        $totalSum = $I->grabValueFrom('//td[2]');
+        // var_dump($totalSum);
+        $I->assertEquals('2', $totalSum);
+
     }
+
 }

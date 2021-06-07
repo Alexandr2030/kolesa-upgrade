@@ -4,10 +4,6 @@ namespace Page\Acceptance;
 class ProductsPage
 {
 
-    /**
-     * Пароль
-     */
-
      /**
      * Страница c платьями
      *
@@ -42,7 +38,7 @@ class ProductsPage
     /**
      * Селектор кнопки быстрый просмотр
      */
-    public static $quick_view_button = '#homefeatured > li:nth-child(1) a.quick-view';
+    public static $quick_view_button = '#homefeatured > li:nth-child(%s) a.quick-view';
 
     /**
      * Селектор кнопки добавления товара в корзину
@@ -64,9 +60,15 @@ class ProductsPage
     public static $addToWishList = '#wishlist_button';
 
     /**
-     * 
+     * Селектор кнопки закрытия карточки товара
      */
     public static $closeCartButton = '#product > div.fancybox-overlay.fancybox-overlay-fixed > div > div > a';
+
+    /**
+     * //body[@id="product"]//a[@title="Close"]
+     */
+    public static $iframeCloseButton = '#index > div.fancybox-overlay.fancybox-overlay-fixed > div > div > a';
+
 
     /**
      * Селектор кнопки возвращения к покупкам
@@ -88,5 +90,16 @@ class ProductsPage
        * @var string
        */
     public static $cartListButton = '//a[@title="View my shopping cart"]';
+
+
+    /**
+     * Селектор кнопки аккаунта
+     */
+    public static $accountBotton = '.account';
+
+    /**
+     * Селектор кнопки лист желаний в личном кабинете
+     */
+    public static $wishListButtonInAccount = '.lnk_wishlist';
 
 }
