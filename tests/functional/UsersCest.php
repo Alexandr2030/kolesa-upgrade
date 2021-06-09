@@ -1,5 +1,6 @@
 <?php
 
+use Codeception\Example;
 use Faker\Factory;
 
 /**
@@ -42,36 +43,41 @@ class UsersCest
     /**
      * Проверка негативного сценария на создание пользователся без name
      * @group test_negative
+     * @dataProvider getDataForCreateUserNegative
+     * @param Example $data
      */
-    public function checkUnableUserWithoutName(\FunctionalTester $I)
+    public function checkUserCreateNegative(\FunctionalTester $I, Example $data)
     {
         $faker = Factory::create();
 
-        $userData = [
-            'email' => $faker->email,
-            'owner' => $faker->lastName . '@alex_radko',
-            'job'   => $faker->company,
-            // 'name'  => $faker->firstName
-        ];
-
+        $email = $faker->email;
+        $owner = $faker->lastName . '@alex_radko';
         $I->haveHttpHeader('Content-Type', 'application/json');
-        $I->sendPost('human', $userData);
-        $I->canSeeResponseContainsJson(['message' => 'Что-то пошло не так, проверьте поля: email, name, owner. p.s. учимся на своих ошибках']);
+        $I->sendPost('human', [
+            $data['email'] ? $email : null, 
+            $data['owner'] ? $owner : null,
+        ]);
+
+
+        $I->seeResponseContainsJson($data['errorText']);
     }
+
     /**
-     * @group test_negative2
+     * dataProvider для теста
      */
-    public function checkUnableUserWithoutOwner(\FunctionalTester $I)
+    protected function getDataForCreateUserNegative()
     {
-        $faker = Factory::create();
-        $userData = [
-            'email' => $faker->email,
-            // 'owner' => $faker->lastName . '@alex_radko',
-            'job'   => $faker->company,
-            'name'  => $faker->firstName
+        return [
+            [
+                'email' => true,
+                'owner' => false,
+                'errorText' => ['message' => 'email не передан']
+            ],
+            [
+                'email' => false,
+                'owner' => true,
+                'errorText' => ['message' => 'email не передан']
+            ]
         ];
-        $I->haveHttpHeader('Content-Type', 'application/json');
-        $I->sendPost('human', $userData);
-        $I->canSeeResponseContainsJson(['message' => 'Что-то пошло не так, проверьте поля: email, name, owner. p.s. учимся на своих ошибках']);
     }
 }
