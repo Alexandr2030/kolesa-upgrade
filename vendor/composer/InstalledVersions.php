@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'a949147937997cb883b0d9682d13a81d4fedd50f',
+    'reference' => 'bc80e87710d77fae30c0006d7d6cfabd9309232d',
     'name' => '__root__',
   ),
   'versions' => 
@@ -44,7 +44,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'a949147937997cb883b0d9682d13a81d4fedd50f',
+      'reference' => 'bc80e87710d77fae30c0006d7d6cfabd9309232d',
     ),
     'behat/gherkin' => 
     array (
@@ -100,6 +100,15 @@ private static $installed = array (
       ),
       'reference' => '770a6be4160a5c0c08d100dd51bff35f6056bbf1',
     ),
+    'codeception/module-rest' => 
+    array (
+      'pretty_version' => '1.3.1',
+      'version' => '1.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '293a0103d5257b7c884ef276147a9a06914e878f',
+    ),
     'codeception/module-webdriver' => 
     array (
       'pretty_version' => '1.2.1',
@@ -143,6 +152,13 @@ private static $installed = array (
         0 => '*',
       ),
     ),
+    'flow/jsonpath' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '*',
+      ),
+    ),
     'fzaninotto/faker' => 
     array (
       'pretty_version' => 'v1.5.0',
@@ -178,6 +194,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'dc960a912984efb74d0a90222870c72c87f10c91',
+    ),
+    'justinrainbow/json-schema' => 
+    array (
+      'pretty_version' => '5.2.10',
+      'version' => '5.2.10.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2ba9c8c862ecd5510ed16c6340aa9f6eadb4f31b',
     ),
     'myclabs/deep-copy' => 
     array (
@@ -534,6 +559,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
+    ),
+    'softcreatr/jsonpath' => 
+    array (
+      'pretty_version' => '0.7.5',
+      'version' => '0.7.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '008569bf80aa3584834f7890781576bc7b65afa7',
     ),
     'symfony/browser-kit' => 
     array (
