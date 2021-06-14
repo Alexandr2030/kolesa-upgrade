@@ -1,28 +1,10 @@
 <?php
 
-use Codeception\Example;
+// use Codeception\Example;
 use Faker\Factory;
 
-/**
- * Класс для работы с API
- */
-class API
-{
-    /**
-     * Урла POST запроса
-     */
-    public static $POST = 'human';
 
-    /**
-     * Урла GET запроса
-     */
-    public static $GET = 'people';
 
-    /**
-     * Метод, применимый в PUT и DELETE методах по _id
-     */
-    public static $VARIOUS = 'human?_id=';
-}
 
 
 /**
@@ -31,63 +13,55 @@ class API
 class UsersCest
 {
     
+    public const NUMBER_OF_USERS = 1;
+    /**
+     * Данные для создания пользователя
+     * 
+     * @var array
+     */
+    protected $data;
+    
     /**
      * Тест на создание, изменение и удаление юзера
-     * @group test_user
-     * @dataProvider dataForcheckUserCreate
-     * @param Example $data
+
+     * @param FunctionalTester $I
+     * @return void
+     * 
      */
-    public function checkUserCreate(\FunctionalTester $I, Example $data)
+    public function createRandomlyUserData()
+
     {
         $faker = Factory::create();
 
-        $defaultSchema = [
-            'job'       => 'string',
-            '_id'       => 'string',
-            'email'     => 'string',
-            'superhero' => 'boolean',
-            'name'      => 'string',
-            'owner'     => 'string'
+        $this->data = [
+            'email'             => strtolower($faker->email),
+            'superhero'         => $faker->boolean(),
+            'skill'             => $faker->word,
+            'owner'             => $faker->name.'@alex_radko',
+            'job'               => $faker->company,
+            'name'              => $faker->firstName,
+            'DOB'               => $faker->date("Y-m-d"),
+            'avatar'            => $faker->imageUrl(),
+            'canBeKilledBySnap' => $faker->boolean(),
+            'created_at'        =>$faker->date("Y-m-d"),
+            
         ];
-
-        $userData = [
-            'email' => $faker->email,
-            'owner' => $faker->name.'@alex_radko',
-            'job'   => $faker->company,
-            'name'  => $faker->firstName
-        ];
-
-        $I->haveHttpHeader('Content-Type', 'application/json');
-        $I->sendPost(API::$POST, $userData);
-        $userId = $I->grabDataFromResponseByJsonPath("_id")[0];
-        $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseContainsJson(['status' => 'ok']);
-
-        $I->sendGet(API::$GET, $userData);
-        $I->seeResponseMatchesJsonType($defaultSchema);
-
-        $I->sendPut(API::$VARIOUS.$userId, ['job'=> $faker->company]);
-        $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseContainsJson($data['nModified']);
-
-        $I->sendDelete(API::$VARIOUS.$userId);
-        $I->seeResponseContainsJson($data['deletedCount']);
-        $I->seeResponseCodeIsSuccessful();
-        $I->sendGet(API::$VARIOUS.$userId);
-        $I->seeResponseContainsJson($data['errorText']);
+        return $this;
     }
-
     /**
-     * dataProvider для теста
+     * 
+     * @group test_user
      */
-    protected function dataForcheckUserCreate()
+    
+    public function sendRandomUsers(\FunctionalTester $I)
     {
-        return [
-            [
-                'nModified'    => ['nModified' => 1],
-                'deletedCount' => ['deletedCount' => 1],
-                'errorText'    => ['error' => 'Not Found']
-            ]
-        ];
+        for ($i = 0; $i <= self::NUMBER_OF_USERS; $i++)
+        {
+            $I->sendPost('/human', [$this->data]);
+            $this->createRandomlyUserData();
+            $I->amOnPage('http://izze.xyz');
+            // $I->haveInCollection('/people', $this->data);
+        }
+
     }
 }
