@@ -4,7 +4,7 @@ use Page\Functional\LoginPageFunc;
 
 /**
  * Класс для проверки авторизации
- * @group test
+ * 
  */
 
  class LoginFuncCest

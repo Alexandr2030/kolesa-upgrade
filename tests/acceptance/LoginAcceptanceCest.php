@@ -4,7 +4,7 @@ use Page\Acceptance\LoginPageAccept;
 
 /**
  * Класс для проверки авторизации
- * @group test
+ * 
  */
 
  class LoginAcceptCest
