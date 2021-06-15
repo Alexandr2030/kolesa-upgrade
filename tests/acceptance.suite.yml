@@ -10,8 +10,6 @@ modules:
     enabled:
         - WebDriver
         - \Helper\Acceptance
-        - \Helper\BaseHelper
-        - Asserts
     config:
         WebDriver:
             url: 'https://www.saucedemo.com/'
