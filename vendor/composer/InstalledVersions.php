@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'bbdf43414aa30b66d981b6047de2db45479ae15f',
+    'reference' => 'fef30c1cf0b7c377bc94f3c10622d29f2516fd3c',
     'name' => '__root__',
   ),
   'versions' => 
@@ -44,7 +44,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'bbdf43414aa30b66d981b6047de2db45479ae15f',
+      'reference' => 'fef30c1cf0b7c377bc94f3c10622d29f2516fd3c',
     ),
     'behat/gherkin' => 
     array (
@@ -100,6 +100,15 @@ private static $installed = array (
       ),
       'reference' => '770a6be4160a5c0c08d100dd51bff35f6056bbf1',
     ),
+    'codeception/module-webdriver' => 
+    array (
+      'pretty_version' => '1.2.1',
+      'version' => '1.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ebbe729c630415e8caf6b0087e457906f0c6c0c6',
+    ),
     'codeception/phpunit-wrapper' => 
     array (
       'pretty_version' => '9.0.6',
@@ -126,6 +135,13 @@ private static $installed = array (
       array (
       ),
       'reference' => 'd56bf6102915de5702778fe20f2de3b2fe570b5b',
+    ),
+    'facebook/webdriver' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '*',
+      ),
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -193,6 +209,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'bae7c545bef187884426f042434e561ab1ddb182',
+    ),
+    'php-webdriver/webdriver' => 
+    array (
+      'pretty_version' => '1.11.1',
+      'version' => '1.11.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'da16e39968f8dd5cfb7d07eef91dc2b731c69880',
     ),
     'phpdocumentor/reflection-common' => 
     array (
@@ -633,6 +658,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'eca0bf41ed421bed1b57c4958bab16aa86b757d0',
+    ),
+    'symfony/process' => 
+    array (
+      'pretty_version' => 'v5.3.0',
+      'version' => '5.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '53e36cb1c160505cdaf1ef201501669c4c317191',
     ),
     'symfony/service-contracts' => 
     array (
